@@ -44,4 +44,4 @@ DODGE! is an arcade pixelart videogame, in which you must survive as long as pos
 6. Pick-up PowerUps to recover health and energy
 
 #### License
-The source code is dual licensed under Public Domain and MIT -- choose whichever you prefer.
+This project is released under the MIT License.
