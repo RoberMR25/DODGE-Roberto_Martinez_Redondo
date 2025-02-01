@@ -2,10 +2,8 @@
 
 UIPauseMenu::UIPauseMenu(float pauseMenuWidth, float pauseMenuHeight)
 {
-	// Load font
 	m_font.loadFromFile("../Data/Fonts/SMB2.ttf");
 
-	// Load background image
 	m_pauseTexture.loadFromFile("../Data/Images/UI/pauseBackground.png");
 	m_pauseSprite.setTexture(m_pauseTexture);
 	m_pauseSprite.setColor(sf::Color(255, 255, 255, 50));
@@ -17,11 +15,11 @@ UIPauseMenu::UIPauseMenu(float pauseMenuWidth, float pauseMenuHeight)
 		m_pauseButtons[i].setString(buttons[i]);
 		m_pauseButtons[i].setCharacterSize(80);
 		m_pauseButtons[i].setFillColor(sf::Color::Red);
-		if (i == 0)	// Play Button
+		if (i == 0)	
 			m_pauseButtons[i].setPosition(700, 300);
-		else if (i == 1)	// Return to menu Button
+		else if (i == 1)
 			m_pauseButtons[i].setPosition(400, 500);
-		else if (i == 2)	// Exit Game Button
+		else if (i == 2)
 			m_pauseButtons[i].setPosition(600, 700);
 	}
 }
@@ -49,10 +47,10 @@ int UIPauseMenu::mouseInput(sf::RenderWindow& window)
 		customBounds.top -= 10.f;
 		customBounds.height += 20.f;
 
-		if (customBounds.contains(pixelToCoordsMousePos))	// We use our customized bounds and pixelToCoordsMousePos
+		if (customBounds.contains(pixelToCoordsMousePos))
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				return i; // 1 -> Play     2 -> Return to menu     3 -> ExitGame
+				return i;
 	}
 
-	return -1; // When there's no click
+	return -1;
 }

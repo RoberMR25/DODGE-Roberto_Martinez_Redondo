@@ -2,21 +2,17 @@
 
 UIScreenMainMenu::UIScreenMainMenu(float mainMenuWidth, float mainMenuHeight)
 {
-	// Load font
 	m_font.loadFromFile("../Data/Fonts/SMB2.ttf");
 
-	// Load background image
 	m_mainMenuBackgroundTexture.loadFromFile("../Data/Images/UI/mainMenuBackgroundV3.png");
 	m_mainMenuBackgroundSprite.setTexture(m_mainMenuBackgroundTexture);
 
-	// Game title
 	m_gameTitleText.setFont(m_font);
 	m_gameTitleText.setString("DODGE!");
 	m_gameTitleText.setCharacterSize(110);
 	m_gameTitleText.setFillColor(sf::Color::Yellow);
 	m_gameTitleText.setPosition(275, 50);
 
-	// Game description
 	m_gameDescriptionText.setFont(m_font);
 	m_gameDescriptionText.setString("Dodge your enemies while collecting coins \n"
 									"   to get the highest score possible. \n"
@@ -27,7 +23,6 @@ UIScreenMainMenu::UIScreenMainMenu(float mainMenuWidth, float mainMenuHeight)
 	m_gameDescriptionText.setFillColor(sf::Color::Yellow);
 	m_gameDescriptionText.setPosition(325, 570);
 
-	// Controls
 	m_controlsText.setFont(m_font);
 	m_controlsText.setString("MOVE:WASD   SPRINT:LSHIFT   PAUSE:P");
 	m_controlsText.setCharacterSize(17);
@@ -41,9 +36,9 @@ UIScreenMainMenu::UIScreenMainMenu(float mainMenuWidth, float mainMenuHeight)
 		m_mainMenuButtons[i].setString(buttons[i]);
 		m_mainMenuButtons[i].setCharacterSize(40);
 		m_mainMenuButtons[i].setFillColor(sf::Color::White);
-		if (i==0)	// Play Button
+		if (i==0)
 			m_mainMenuButtons[i].setPosition(490, 280);
-		else if (i==1)	// Exit Game Button
+		else if (i==1)
 			m_mainMenuButtons[i].setPosition(390, 395);
 	}
 }
@@ -74,10 +69,10 @@ int UIScreenMainMenu::mouseInput(sf::RenderWindow& window)
 		customBounds.top -= 10.f;
 		customBounds.height += 20.f;
 
-		if (customBounds.contains(pixelToCoordsMousePos))	// We use our customized bounds and pixelToCoordsMousePos
+		if (customBounds.contains(pixelToCoordsMousePos))
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-				return i; // 1 -> Play     2 -> Controls     3 -> ExitGame
+				return i;
 	}
 
-	return -1; // When there's no click
+	return -1;
 }

@@ -29,18 +29,16 @@ bool Game::init(GameCreateInfo& createInfo)
 	m_minutes = 0.f;
 	m_hours = 0.f;
 
-	// { 960.f, 640.f } to see the enemy destroyer colliders (currently deactivated)
-	// { 480.f, 320.f } game 
 	m_mainMenuView = sf::View(sf::FloatRect({ 0.f, 0.f }, { 1144.f, 744.f }));	// This is the view we will have when we initiate the game
 	m_mainMenuView.setCenter({ 577.f, 372.f });									// It is 1144x744 because that's the background png definition
 
 	m_gameView = sf::View(sf::FloatRect({ 0.f, 0.f }, { 480.f, 320.f }));	// This is the game definition. Since the pixelart scenery and characters
 	m_gameView.setCenter({ 240.f, 160.f });									// are so small, we "make a big zoom" to see them bigger
 
-	m_pauseMenuView = sf::View(sf::FloatRect({ 0.f, 0.f }, { 1920.f, 1080.f })); // Since this is just a UI Screen with no elements such as pictures
-	m_pauseMenuView.setCenter({ 960.f, 540.f });								 // or characters, we can make it 1920x1080
+	m_pauseMenuView = sf::View(sf::FloatRect({ 0.f, 0.f }, { 1920.f, 1080.f }));
+	m_pauseMenuView.setCenter({ 960.f, 540.f });
 
-	m_gameOverView = sf::View(sf::FloatRect({ 0.f, 0.f }, { 1920.f, 1080.f }));	// The same as the last one
+	m_gameOverView = sf::View(sf::FloatRect({ 0.f, 0.f }, { 1920.f, 1080.f }));
 	m_gameOverView.setCenter({ 960.f, 540.f });
 
 	m_window->setView(m_mainMenuView);
@@ -75,50 +73,46 @@ bool Game::isRunning() const
 
 void Game::update(uint32_t deltaMilliseconds)
 {
-	// Checks if user closed the window
 	for (auto event = sf::Event(); m_window->pollEvent(event);)
 		if (event.type == sf::Event::Closed)
 			m_window->close();
 
-	// Pause Menu appears/disappears when player presses "P"
 	if (m_gameState == INGAME && sf::Keyboard::isKeyPressed(sf::Keyboard::P) && !m_pauseKeyIsPressed)
 	{
-		m_pauseKeyIsPressed = true;		// This is made so that it only detects one click
+		m_pauseKeyIsPressed = true;
 		m_gameState = PAUSE;
 	}
 	else if (m_gameState == PAUSE && sf::Keyboard::isKeyPressed(sf::Keyboard::P) && !m_pauseKeyIsPressed)
 	{
-		m_pauseKeyIsPressed = true;		// This is made so that it only detects one click
+		m_pauseKeyIsPressed = true;
 		m_gameState = INGAME;
 	}
 
-	// Pause menu doesn't work again until key P is released
 	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::P))
 		m_pauseKeyIsPressed = false;
 
-	// Renders depending on the Game State (Main Menu, Ingame, Pause Menu or )
-	if (m_gameState == MAINMENU)	// If we're in the Main Menu...
+	if (m_gameState == MAINMENU)
 	{
 		m_window->setView(m_mainMenuView);
 		
-		if (!m_audioManager->menuMusicIsOn)	// We make sure that only the main menu song is on
+		if (!m_audioManager->menuMusicIsOn)
 		{
-			m_audioManager->inGameMusicIsOn = false;	// Deactivate the other ones
+			m_audioManager->inGameMusicIsOn = false;
 			m_audioManager->gameOverMusicIsOn = false;
-			m_audioManager->menuMusicIsOn = true;	// Activate the correct one
+			m_audioManager->menuMusicIsOn = true;
 
-			m_audioManager->playMusic(1);	// And play it
+			m_audioManager->playMusic(1);
 		}
 
-		if (m_mainMenu->mouseInput(*m_window) == 0)	// ...and press "Play"
+		if (m_mainMenu->mouseInput(*m_window) == 0)
 		{
 			m_gameState = INGAME;
-			resetGame();	// We always reset the world before creating a new one
+			resetGame();
 		}
-		else if (m_mainMenu->mouseInput(*m_window) == 1)	// ...and press "Exit Game"
+		else if (m_mainMenu->mouseInput(*m_window) == 1)
 			m_window->close();
 	}
-	else if (m_gameState == INGAME)	// If we're playing...
+	else if (m_gameState == INGAME)
 	{
 		m_window->setView(m_gameView);
 
@@ -134,27 +128,24 @@ void Game::update(uint32_t deltaMilliseconds)
 		m_world->update(deltaMilliseconds);
 		updateTimer(deltaMilliseconds);
 		updateGameInterface();
-		if (m_world->getPlayerHealth() == 0)	// ...and the player dies
+		if (m_world->getPlayerHealth() == 0)
 			m_gameState = GAMEOVER;
 	}
-	else if (m_gameState == PAUSE)	// If we're in the pause menu...
+	else if (m_gameState == PAUSE)
 	{
 		m_window->setView(m_pauseMenuView);
 
-		if (m_pauseMenu->mouseInput(*m_window) == 0)	// ...and press "Resume"
-		{
+		if (m_pauseMenu->mouseInput(*m_window) == 0)
 			m_gameState = INGAME;
-			/*m_world->load();*/
-		}
-		else if (m_pauseMenu->mouseInput(*m_window) == 1)	// ...and press "Return to menu"
+		else if (m_pauseMenu->mouseInput(*m_window) == 1)
 		{
 			m_gameState = MAINMENU;
 			m_window->setView(m_mainMenuView);
 		}
-		else if (m_pauseMenu->mouseInput(*m_window) == 2)	// ...and press "Exit Game"
+		else if (m_pauseMenu->mouseInput(*m_window) == 2)
 			m_window->close();
 	}
-	else if (m_gameState == GAMEOVER)	// If we're in the Game Over panel...
+	else if (m_gameState == GAMEOVER)
 	{
 		m_window->setView(m_gameOverView);
 
@@ -167,17 +158,17 @@ void Game::update(uint32_t deltaMilliseconds)
 			m_audioManager->playMusic(3);
 		}
 
-		if (m_gameOver->mouseInput(*m_window) == 0)	// ...and press "Play again"
+		if (m_gameOver->mouseInput(*m_window) == 0)
 		{
 			m_gameState = INGAME;
 			resetGame();
 		}
-		else if (m_gameOver->mouseInput(*m_window) == 1)	// ...and press "Return to menu"
+		else if (m_gameOver->mouseInput(*m_window) == 1)
 		{
 			m_gameState = MAINMENU;
 			m_window->setView(m_mainMenuView);
 		}
-		else if (m_gameOver->mouseInput(*m_window) == 2)	// ...and press "Exit Game"
+		else if (m_gameOver->mouseInput(*m_window) == 2)
 			m_window->close();
 	}
 }
@@ -207,42 +198,34 @@ void Game::render()
 
 void Game::updateGameInterface()
 {
-	// Score
 	m_gameInterface->m_gameInterfaceScoreText.setString("Score: " + std::to_string(m_world->getScore()));
 	
-	// Timer
 	m_gameInterface->m_gameInterfaceTimerText.setString(
 		(m_hours < 10 ? "0" : "") + std::to_string(m_hours) + ":" +		// This way, if hours, minutes or seconds are 
 		(m_minutes < 10 ? "0" : "") + std::to_string(m_minutes) + ":" + // under 10, a "0" appears before them, so that
 		(m_seconds < 10 ? "0" : "") + std::to_string(m_seconds)			// the timer has always this format: "00:00:00"
 	);
 
-	// Coins
 	m_gameInterface->m_gameInterfaceCoinText.setString("Gems: " + std::to_string(m_world->getCoinsCollected()));
 
-	// Health
 	m_gameInterface->m_gameInterfaceHealthText.setString("Health: " + std::to_string(m_world->getPlayerHealth()));
 
-	// Energy
-	std::ostringstream stream;	// We use ostringstream to make the number show us only two (in this case) decimals
-	stream << std::fixed << std::setprecision(2) << m_world->getPlayerEnergy();
-	m_gameInterface->m_gameInterfaceEnergyText.setString("Energy: " + stream.str());
+	std::ostringstream oss;
+	oss << std::fixed << std::setprecision(2) << m_world->getPlayerEnergy();
+	m_gameInterface->m_gameInterfaceEnergyText.setString("Energy: " + oss.str());
 }
 
 void Game::updateGameOverInterface()
 {
-	// Final coins
 	m_gameOver->m_coinsCollected.setString("Gems collected: " + std::to_string(m_world->getCoinsCollected()));
 
-	// Final time survived
 	m_gameOver->m_timeSurvived.setString(
 		std::string("Time survived: ") +
-		(m_hours < 10 ? "0" : "") + std::to_string(m_hours) + ":" +		// This way, if hours, minutes or seconds are 
-		(m_minutes < 10 ? "0" : "") + std::to_string(m_minutes) + ":" + // under 10, a "0" appears before them, so that
-		(m_seconds < 10 ? "0" : "") + std::to_string(m_seconds)			// the timer has always this format: "00:00:00"
+		(m_hours < 10 ? "0" : "") + std::to_string(m_hours) + ":" +
+		(m_minutes < 10 ? "0" : "") + std::to_string(m_minutes) + ":" +
+		(m_seconds < 10 ? "0" : "") + std::to_string(m_seconds)
 	);
 
-	// Final score
 	m_gameOver->m_finalScore.setString("Final score: " + std::to_string(m_world->getScore()));
 }
 
@@ -273,13 +256,13 @@ void Game::updateTimer(uint32_t deltaMillisecondsForTimer)
 
 void Game::resetGame()
 {
-	m_time = 0.f;			// We reset the values to make sure everything works again correctly since the beginning
+	m_time = 0.f;
 	m_previousSecond = 0;
 	m_seconds = 0.f;
 	m_minutes = 0.f;
 	m_hours = 0.f;
 
-	delete m_world;			// We make this so that if we return to the main menu and Play again, the world reloads
-	m_world = new World();	// this is so that if we choose to return to the menu and play again at some point,
-	m_world->load();		// world resets without having to close the application
+	delete m_world;
+	m_world = new World();
+	m_world->load();
 }

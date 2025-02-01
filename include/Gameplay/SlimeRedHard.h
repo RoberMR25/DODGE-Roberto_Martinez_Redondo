@@ -9,8 +9,8 @@ public:
 	
 	SlimeRedHard()
 	{
-		m_sprite.setScale(1.0f, 1.0f);	// Biggest enemy, biggest scale
-		m_damage = 3;					// Hardest enemy, highest damage
+		m_sprite.setScale(1.0f, 1.0f);
+		m_damage = 3;
 	}
 
 	struct SlimeRedHardDescriptor : EnemyDescriptor
@@ -30,7 +30,7 @@ public:
 private:
 
 	sf::Vector2f m_direction{ .0f, .0f };
-	sf::Vector2f m_speed{ 20.0f, 20.0f };	// Slowest enemy, lowest speed
+	sf::Vector2f m_speed{ 20.0f, 20.0f };
 
 	float m_boundsOffsetX{ 12.f };
 	float m_boundsOffsetY{ 12.f };

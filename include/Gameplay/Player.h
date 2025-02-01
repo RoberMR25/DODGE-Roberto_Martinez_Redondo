@@ -28,8 +28,6 @@ class Player : public GameObject
 		{
 			sf::FloatRect spriteBounds = m_sprite.getGlobalBounds();
 
-			// This way we can manually adjust the sprite bounds,
-			// instead of taking the global bounds
 			spriteBounds.left += 37.5f;
 			spriteBounds.top += 38.f;
 			spriteBounds.width -= 73.f;

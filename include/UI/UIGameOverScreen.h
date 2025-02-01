@@ -21,7 +21,7 @@ class UIGameOverScreen
 		sf::Texture m_gameOverTexture;
 		sf::Sprite m_gameOverSprite;
 
-		sf::Text m_gameOverButtons[3];	// Button 1 for "Play again", button 2 for "Return to menu", button 3 for "Exit Game"
+		sf::Text m_gameOverButtons[3];	// Button 1 -> "Play again" | Button 2 -> "Return to menu" | Button 3 -> "Exit Game"
 
 		sf::Text m_gameOverText;
 

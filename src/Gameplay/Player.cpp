@@ -30,12 +30,11 @@ bool Player::init(const PlayerDescriptor& playerDescriptor)
 
 void Player::update(float deltaMilliseconds)
 {
-	m_time += deltaMilliseconds * m_millisecondsToSeconds;	// Update time
-	float deltaSeconds = deltaMilliseconds / 1000.0f;	// We use a non-acummulated time variable for the sprint use and recovery
+	m_time += deltaMilliseconds * m_millisecondsToSeconds;
+	float deltaSeconds = deltaMilliseconds / 1000.0f;
 
 	sf::Vector2f direction{ 0.0f, 0.0f };
 
-	// Player movement (WASD / Arrows)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		m_direction.x = -1.0f;
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -91,11 +90,10 @@ void Player::loseHealth(int healthLost)
 
 void Player::playerSprint(float deltaSeconds)
 {
-	// Energy for the sprint
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) // When pressing Shift
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) 
 	{
 		m_isSprinting = true;
-		m_currentSprintEnergy -= (m_sprintEnergyLostPerSecond * deltaSeconds);	// Energy consumes with time
+		m_currentSprintEnergy -= (m_sprintEnergyLostPerSecond * deltaSeconds);
 
 		if (m_currentSprintEnergy < 0.0f)
 		{
@@ -103,30 +101,30 @@ void Player::playerSprint(float deltaSeconds)
 			m_isSprinting = false;
 		}
 	}
-	else    // If not pressing Shift
+	else
 	{
 		m_isSprinting = false;
-		m_currentSprintEnergy += m_sprintEnergyRecoveredPerSecond * deltaSeconds;	// Energy recovers with time
+		m_currentSprintEnergy += m_sprintEnergyRecoveredPerSecond * deltaSeconds;
 
 		if (m_currentSprintEnergy > m_maxSprintEnergy)
 			m_currentSprintEnergy = m_maxSprintEnergy;
 	}
 
 	if (m_isSprinting)
-		setSpeed(m_sprintSpeed);	// Speed is modified when player is sprinting
+		setSpeed(m_sprintSpeed);
 	else
-		setSpeed(m_defaultSpeed);	// And returns to its normal value when player is not sprinting
+		setSpeed(m_defaultSpeed);
 }
 
 void Player::recoverHealth(int healthRecovered)
 {
-	if (m_playerHealth < m_playerMaxHealth && m_playerHealth > 0)	// If player doesn't have max health and isn't dead
+	if (m_playerHealth < m_playerMaxHealth && m_playerHealth > 0)
 		m_playerHealth += healthRecovered;
 }
 
 void Player::recoverEnergy(float energyRecovered)
 {
-	m_currentSprintEnergy += energyRecovered;	// We add energy to the player
-	if (m_currentSprintEnergy > m_maxSprintEnergy)	// If player's new energy value is higher than the maximum
-		m_currentSprintEnergy = m_maxSprintEnergy;	// We just give it the maximum value
+	m_currentSprintEnergy += energyRecovered;
+	if (m_currentSprintEnergy > m_maxSprintEnergy)
+		m_currentSprintEnergy = m_maxSprintEnergy;
 }

@@ -8,8 +8,8 @@ class SlimeBlueEasy : public Enemy
 
 		SlimeBlueEasy()
 		{
-			m_sprite.setScale(0.5f, 0.5f);	// Smallest enemy, smallest scale
-			m_damage = 1;					// Easiest enemy, lowest damage
+			m_sprite.setScale(0.5f, 0.5f);
+			m_damage = 1;
 		}
 
 		struct SlimeBlueEasyDescriptor : EnemyDescriptor
@@ -27,7 +27,7 @@ class SlimeBlueEasy : public Enemy
 	private:
 
 		sf::Vector2f m_direction{ .0f, .0f };
-		sf::Vector2f m_speed{ 100.0f, 100.0f };	// Fastest enemy, higher speed
+		sf::Vector2f m_speed{ 100.0f, 100.0f };
 
 		float m_boundsOffsetX{ 5.f };
 		float m_boundsOffsetY{ 5.f };

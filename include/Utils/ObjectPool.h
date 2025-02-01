@@ -18,7 +18,7 @@ public:
 	void release(T& element);
 
 private:
-	std::array<T, N> m_elements;	// T m_elements[N];
+	std::array<T, N> m_elements;
 	std::list<T*> m_availableElements;
 
 };

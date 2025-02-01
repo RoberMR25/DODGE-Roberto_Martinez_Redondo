@@ -16,8 +16,8 @@ class AudioManager
                                         // soundIndex 3 = heartPickUp | soundIndex 4 = energyPickUp
         void setVolume(float volume);
 
-        bool menuMusicIsOn{ false };        // These bools will control, on Game.cpp, which
-        bool inGameMusicIsOn{ false };      // music should be on depending on where we are
+        bool menuMusicIsOn{ false };
+        bool inGameMusicIsOn{ false };
         bool gameOverMusicIsOn{ false };
 
     private:

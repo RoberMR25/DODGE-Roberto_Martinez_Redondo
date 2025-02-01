@@ -17,7 +17,7 @@ class UIPauseMenu
 		sf::Texture m_pauseTexture;
 		sf::Sprite m_pauseSprite;
 
-		sf::Text m_pauseButtons[3];	// Button 1 for "Play", button 2 for "Return to menu", button 3 for "Exit Game"
+		sf::Text m_pauseButtons[3];	// Button 1 -> "Play" | Button 2 -> "Return to menu" | Button 3 -> "Exit Game"
 
 		sf::Font m_font;
 };

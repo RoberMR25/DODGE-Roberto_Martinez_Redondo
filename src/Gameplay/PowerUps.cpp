@@ -21,8 +21,8 @@ void PowerUps::update(float deltaMilliseconds)
 		m_sprite.setPosition(m_position);
 
 		m_time += deltaMilliseconds * m_millisecondsToSeconds;
-		int seconds = static_cast<int>(m_time);		// For the timer: cast float (time) into int, so that it doesn't show decimals
-		if (seconds > m_previousSecond)				// For the timer: Only updates seconds once per second (not every frame)
+		int seconds = static_cast<int>(m_time);
+		if (seconds > m_previousSecond)
 		{
 			m_previousSecond = seconds;
 

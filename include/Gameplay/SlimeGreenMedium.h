@@ -8,8 +8,8 @@ class SlimeGreenMedium : public Enemy
 
 		SlimeGreenMedium()
 		{
-			m_sprite.setScale(0.8f, 0.8f);	// Medium enemy, medium scale
-			m_damage = 2;					// Medium enemy, medium damage
+			m_sprite.setScale(0.8f, 0.8f);
+			m_damage = 2;
 		}
 
 		struct SlimeGreenMediumDescriptor : EnemyDescriptor
@@ -29,7 +29,7 @@ class SlimeGreenMedium : public Enemy
 	private:
 
 		sf::Vector2f m_direction{ .0f, .0f };
-		sf::Vector2f m_speed{ 50.0f, 50.0f };	// Medium enemy, medium velocity
+		sf::Vector2f m_speed{ 50.0f, 50.0f };
 
 		float m_boundsOffsetX{ 9.f };
 		float m_boundsOffsetY{ 9.f };

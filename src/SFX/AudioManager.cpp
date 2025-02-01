@@ -11,36 +11,36 @@ AudioManager::~AudioManager()
     stopMusic();
 }
 
-void AudioManager::playMusic(int state)    // state 1 = MainMenu | state 2 = InGame | state 3 = GameOver
+void AudioManager::playMusic(int state)
 {
-    if (state == 1) // Main Menu
+    if (state == 1)
     {
         m_music.openFromFile("../Data/MusicAndSounds/MainMenuMusic.ogg");
         m_music.setLoop(true);
     }
-    else if (state == 2) // InGame
+    else if (state == 2)
     {
         m_music.openFromFile("../Data/MusicAndSounds/InGameMusic.ogg");
         m_music.setLoop(true);
     }
-    else if (state == 3) // GameOver
+    else if (state == 3) 
     {
         m_music.openFromFile("../Data/MusicAndSounds/GameOverMusic.ogg");
-        m_music.setLoop(false);     // In this case, we just want a short, characteristic song for the defeat,
-    }                               // we don't want to have it looping
+        m_music.setLoop(false);
+    }
 
     m_music.play();
 }
 
-void AudioManager::playSound(int soundIndex)    // soundIndex 1 = Player Hurt | soundIndex 2 = coinPickUp
-{                                               // soundIndex 3 = heartPickUp | soundIndex 4 = energyPickUp
-    if (soundIndex == 1)        // Player Hurt
+void AudioManager::playSound(int soundIndex)
+{
+    if (soundIndex == 1)
         m_music.openFromFile("../Data/MusicAndSounds/PlayerHurtSound.wav");
-    else if (soundIndex == 2)   // coinPickUp
+    else if (soundIndex == 2)
         m_music.openFromFile("../Data/MusicAndSounds/CoinPickupSound.wav");
-    else if (soundIndex == 3)   // heartPickUp
+    else if (soundIndex == 3)
         m_music.openFromFile("../Data/MusicAndSounds/HealthPickupSound.wav");
-    else if (soundIndex == 4)   // energyPickUp
+    else if (soundIndex == 4)
         m_music.openFromFile("../Data/MusicAndSounds/EnergyPickupSound.wav");
 
     m_music.setLoop(false);

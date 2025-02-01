@@ -17,7 +17,7 @@ class UIScreenMainMenu
 		sf::Texture m_mainMenuBackgroundTexture;
 		sf::Sprite m_mainMenuBackgroundSprite;
 
-		sf::Text m_mainMenuButtons[2];	// 1 button for "Play", another one for "Exit Game"
+		sf::Text m_mainMenuButtons[2];	// Button 1 -> "Play" | Button 2 -> "Exit Game"
 
 		sf::Text m_gameTitleText;
 		sf::Text m_gameDescriptionText;

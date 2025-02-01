@@ -41,12 +41,10 @@ class World
 		void update(uint32_t deltaMilliseconds);
 		void render(sf::RenderWindow& window);
 
-		// Collisions
 		void checkCollision();
 		void checkCollisionForEnemies();
 		void chooseHealthLost(int playerHealthLost);
 
-		// Score
 		int getScore() const { return m_playerScore; }
 		void setScoreByTimer() { m_playerScore += m_scoreAddedPerSecond; }
 		void setScoreByCoin(int scoreAdded);
@@ -54,21 +52,17 @@ class World
 		int getPlayerHealth();
 		float getPlayerEnergy();
 
-		// Timer
 		void updateTimer(uint32_t deltaMillisecondsForTimer);
 
-		// Enemy Spawns
 		void enemySpawn();
 		void slimeBlueEasySpawn();
 		void slimeGreenMediumSpawn();
 		void slimeRedHardSpawn();
 		sf::Vector2f setEnemySpawnPosition(sf::Vector2f enemyDirection);
 
-		// RandomRange (to choose a random number. Based on C# "RandomRange")
 		float floatRandomRange(float min, float max);
 		int intRandomRange(int min, int max);
 
-		// PowerUps Spawns
 		void powerUpsSpawn();
 		void coinsSpawn();
 		void heartsSpawn();
@@ -77,29 +71,23 @@ class World
 
 	private:
 
-		// Time
 		float m_millisecondsToSeconds{ 0.f };
 		float m_time{ 0.f };
 
-		// Object Pool
 		ObjectPool<SlimeBlueEasy, 50> m_slimeBlueEasyObjectPool;
 		ObjectPool<SlimeGreenMedium, 50> m_slimeGreenMediumObjectPool;
 		ObjectPool<SlimeRedHard, 50> m_slimeRedHardObjectPool;
 
-		// Lists to manage enemies' use
 		std::vector<SlimeBlueEasy*> m_slimeBlueEasyEnemies;
 		std::vector<SlimeGreenMedium*> m_slimeGreenMediumEnemies;
 		std::vector<SlimeRedHard*> m_slimeRedHardEnemies;
 
-		// Player
 		Player* m_player{ nullptr };
 
-		// PowerUps Pool and List
 		ObjectPool<PowerUps, 10> m_powerUpsObjectPool;
 		std::vector<PowerUps*> m_powerUpsVector;
 		int m_timeForPowerUpsToSpawn{ 5 };
 
-		// Map and Layers
 		tmx::Map* m_map{ nullptr };
 		MapLayer* m_layerZero{ nullptr };
 		MapLayer* m_layerOne{ nullptr };
@@ -110,18 +98,15 @@ class World
 		ObjectLayer* m_topCollisionLayer{ nullptr };
 		ObjectLayer* m_enemyDespawnCollisionLayer{ nullptr };
 
-		// Collision
 		float m_collisionOffset{ 0.f };
 		bool m_hasInitiatedCollision{ false };
 		bool m_hasInitiatedCollisionWithPowerUp{ false };
 
-		// Score
 		int m_playerScore{ 0 };
 		int m_scoreAddedPerSecond{ 0 };
 		int m_previousSecond{ 0 };
 		int m_coinsCollected{ 0 };
 		
-		// Difficulty
 		float m_scoreRequiredToChangeFromEasyToMediumDifficulty{ 150.f };		// Values are low so that you can easily test it.
 		float m_scoreRequiredToChangeFromMediumToHardDifficulty{ 300.f };		// For a "final edition" of the game, these values
 																				// would be higher.
@@ -148,6 +133,5 @@ class World
 		sf::Vector2f m_greenSlimeSpeed_HardDif{ 140.f, 140.f };
 		sf::Vector2f m_redSlimeSpeed_HardDif{ 100.f, 100.f };
 
-		// SFX 
 		AudioManager* m_audioManager{ nullptr };
 };
