@@ -1,0 +1,69 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level_v1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "demo.tmx": {
+            "scale": 1.3052604166666666,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.36391205458676,
+                "y": 574.981046247157
+            }
+        },
+        "demo.tmx#tileset": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "images/tilemap/Tileset01.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "images/tilemap/Tileset02.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "images/tilemap01/Tilemap01.tsx": {
+            "scaleInDock": 1
+        },
+        "images/tilemap02/Tileset02.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "level_v1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 281.6666666666667,
+                "y": 188.3333333333333
+            }
+        }
+    },
+    "last.imagePath": "C:/DODGE/data/Levels/images/pngs",
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": "3",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "level_v1.tmx",
+        "images/tilemap/Tileset01.tsx",
+        "images/tilemap/Tileset02.tsx"
+    ],
+    "project": "dodgemap.tiled-project",
+    "recentFiles": [
+        "images/tilemap/Tileset02.tsx",
+        "images/tilemap/Tileset01.tsx",
+        "level_v1.tmx",
+        "demo.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

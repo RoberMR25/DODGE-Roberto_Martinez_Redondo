@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="20">
+ <tileset firstgid="1" source="images/tilemap/Tileset01.tsx"/>
+ <tileset firstgid="106" source="images/tilemap/Tileset02.tsx"/>
+ <layer id="2" name="Tile Layer 1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBg48J6V9vgDEH8E4k+sCHv12RDYAIgN2VDFqIFh5hqxIezNZ4NgZHX5VMYFQFwIxEVsqP5Fdg+t+cj+RXYPMp/YOEA2F5956P7FhYmJA0rjF1/c4Iuv4RS/tOCP+nfUv6P+Hdr+NaCDPeh8Azbq1+/E1g0AGHLCow==
+  </data>
+ </layer>
+ <layer id="3" name="Tile Layer 2" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzV1dltwkAQxvGRMGAc0kfeAkgcJQBJauGQOErgrIVD4igBG+glJeTvh0hkZBZnTZRkpN+T5/Mgs6MV+d16zooUUEQpq565PEMRJffrs/e0SJn+CqqoqWyZ/gqqqKlsWC362+igq7It+tvooKuyhYxIj/4+BhiqbI/+PgYYRsxd0L/ECmuVXdC/xArriLkb+rfYYa+yG/q32GEfMfevVI7/zUvb532ygUW+QaaZYG6O7+9l7PO6RimRMSaYYoZ56n7vv1YHZvgIcMQJ5wRzTefu8ry6Dt8QHh6Qx6Nz/byb9iR8r2lXLrN1ZjTQxAte8ebE+816x75TI2aMMcEUM8wd+/fFrQMzfAQ44oTzHefa7t9n2e5/0v1Luv+29RSzz/ZeCMt4L9w4z6Z337pTjDv6T+6jn64PY1dclA==
+  </data>
+ </layer>
+ <layer id="1" name="Tile Layer 3" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzdsJgDAMheGA3ahO1vTiXrqZHcAjNNABNPpwDvyEPH26iGRUXqyihhLS4e3oQF4z70Td0TUvBpE1+Lnm0aVLly5dun9wFWVU0DZuRe3h/75p8r7aBRQxMAg=
+  </data>
+ </layer>
+ <objectgroup id="4" name="Ground Collisions Layer">
+  <object id="10" x="-0.25" y="287.25" width="480.5" height="33"/>
+ </objectgroup>
+ <objectgroup id="6" name="Left Wall Collisions Layer">
+  <object id="14" x="-0.333333" y="0" width="27.6667" height="320.667"/>
+ </objectgroup>
+ <objectgroup id="7" name="Right Wall Collisions Layer">
+  <object id="13" x="453.333" y="-0.333333" width="26.6667" height="320.667"/>
+ </objectgroup>
+ <objectgroup id="8" name="Top Collisions Layer">
+  <object id="12" x="0" y="0" width="480.25" height="16.5"/>
+ </objectgroup>
+ <objectgroup id="9" name="Enemy Despawn Collision Layer">
+  <object id="16" x="-125" y="-125" width="750" height="20"/>
+  <object id="17" x="-125" y="445" width="750" height="20"/>
+  <object id="18" x="-145" y="-110" width="20" height="560"/>
+  <object id="19" x="625" y="-110" width="20" height="560"/>
+ </objectgroup>
+</map>
